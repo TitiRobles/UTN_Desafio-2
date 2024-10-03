@@ -1,4 +1,5 @@
 from UTN_Heroes_Dataset.utn_matrices import matriz_data_heroes
+from UTN_Heroes_Dataset.utn_funciones.auxiliares import color_text
 
 def obtener_maximo(matriz: list[list], indice_matriz: int) -> float:
     """_summary_ Recibe una matriz con listas y el parametro del indice de la lista que queremos acceder
@@ -65,9 +66,37 @@ def mostrar_heroe(matriz, s_i, i) -> str:
                     texto += f"{matriz[s_i][i]:05.2f} | "
                 case _:
                     texto += f"{matriz[s_i][i]} | "
+    color_text(texto, "green")
     return texto
+
+def selection_sort_matrices(matriz: list[list], ind_matriz: int, sentido: str) -> list[list]:
+    matriz_a_ordenar = matriz.pop(ind_matriz)
+
+    for i in range(len(matriz_a_ordenar)-1):
+        i_min = i
+        for sub_i in range(i+1, len(matriz_a_ordenar)):
+            if (matriz_a_ordenar[sub_i] < matriz_a_ordenar[i_min] and sentido == 'ASC')\
+            or (matriz_a_ordenar[sub_i] > matriz_a_ordenar[i_min] and sentido == 'DES'):
+                i_min = sub_i
+
+        if i_min != i:
+            matriz_a_ordenar[i], matriz_a_ordenar[i_min] = matriz_a_ordenar[i_min], matriz_a_ordenar[i]
+
+            for lista in matriz:
+                lista[i], lista[i_min] = lista[i_min], lista[i]
+
+    matriz.insert(ind_matriz, matriz_a_ordenar)
+
+    return matriz
     
 
-if __name__ == "__main__":
-    pepe = obtener_minimo(matriz_data_heroes, 5)
-    print(pepe)
+# if __name__ e== "__main__":
+    # pepe = obtener_minimo(matriz_data_heroes, 5)
+    # print(pepe)
+    # nombres = ['Remy Le Beau', 'Scott Summers', 'Jean Gray', 'Charles Xavier', 'Sara Howlett']
+    # aliases = ['Gambit', 'Cyclops', 'Phoenix', 'Professor X', 'X-23']
+    # edades = [32, 29, 30, 54, 16]
+    # matriz = [nombres, aliases, edades]
+
+    # prueba = selection_sort_matrices(matriz, 0, 'DES')
+    # print(prueba)

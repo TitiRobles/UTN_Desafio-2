@@ -7,5 +7,8 @@ from .funciones_utn import (filtrar_genero_cantidad,
                             filtrar_genero_poder_menos, 
                             filtrar_genero_poder_entre,
                             filtrar_poder_minimo,
-                            filtrar_altura_maxima)
+                            filtrar_altura_maxima,
+                            ordenar_heroes_alfabetamente_apodo,
+                            ordenar_heroes_alfabeticamente_nombre,
+                            ordenar_heroes_por_altura)
 from .auxiliares import obtener_maximo, obtener_minimo, mostrar_heroe

@@ -1,4 +1,4 @@
-from .auxiliares import obtener_maximo, obtener_minimo, mostrar_heroe
+from .auxiliares import obtener_maximo, obtener_minimo, mostrar_heroe, selection_sort_matrices
 from UTN_Heroes_Dataset.utn_matrices import matriz_data_heroes
 
 def filtrar_genero_cantidad(matriz: list[list], genero: str):
@@ -146,3 +146,76 @@ def filtrar_altura_maxima(matriz: list[list]):
             texto = texto[0:-2]
             print(texto)
 
+def ordenar_heroes_alfabeticamente_nombre(matriz: list[list]):
+    """
+    Recibe la matriz y la ordena alfabeticamente por el nombre del héroe
+
+    Args:
+        matriz (list[list]): La matriz con los datos de los heroes
+    """
+    matriz_ordenada = selection_sort_matrices(matriz, 0, 'ASC')
+
+    cantidad_columnas = len(matriz_ordenada[0])
+    cantidad_filas = len(matriz_ordenada)
+
+    for i in range(cantidad_columnas):
+        texto = ""
+        for s_i in range(cantidad_filas):
+            texto += f"{mostrar_heroe(matriz_ordenada, s_i, i)}"
+        texto = texto[0:-2]
+        print(texto)
+
+def ordenar_heroes_alfabetamente_apodo(matriz: list[list]):
+    """
+    Recibe la matriz y la ordena alfabeticamente de manera descendente por el apodo del héroe
+
+    Args:
+        matriz (list[list]): La matriz con los datos de los heroes
+    """
+    matriz_ordenada = selection_sort_matrices(matriz, 2, 'DES')
+
+    cantidad_columnas = len(matriz_ordenada[0])
+    cantidad_filas = len(matriz_ordenada)
+
+    for i in range(cantidad_columnas):
+        texto = ""
+        for s_i in range(cantidad_filas):
+            texto += f"{mostrar_heroe(matriz_ordenada, s_i, i)}"
+        texto = texto[0:-2]
+        print(texto)
+
+def ordenar_heroes_por_altura(matriz: list[list]):
+    """
+    Recibe la matriz y la ordena por altura de la manera indicada por el usuario
+
+    Args:
+        matriz (list[list]): La matriz con los datos de los heroes
+    """
+    bandera = None
+
+    while True:
+        eleccion = input("Seleccione la manera de ordenar:\n[1] 'ASC'\n[2] 'DES'...\n ")
+        if eleccion == '1':
+            bandera = 'ASC'
+            break
+        elif eleccion == '2':
+            bandera = 'DES'
+            break
+        else:
+            print("\nPor favor ingrese una opcion valida...\n")
+            continue
+    
+    matriz_ordenada = selection_sort_matrices(matriz, 5, bandera)
+
+    cantidad_columnas = len(matriz_ordenada[0])
+    cantidad_filas = len(matriz_ordenada)
+
+    for i in range(cantidad_columnas):
+        texto = ""
+        for s_i in range(cantidad_filas):
+            texto += f"{mostrar_heroe(matriz_ordenada, s_i, i)}"
+        texto = texto[0:-2]
+        print(texto)
+
+if __name__ == "__main__":
+    ordenar_heroes_por_altura(matriz_data_heroes)

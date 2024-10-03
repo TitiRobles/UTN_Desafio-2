@@ -1,7 +1,13 @@
-from validaciones.validaciones import validar_opcion
+# import sys
+# import os
+
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from validaciones.validaciones_pckg import validar_opcion
 from funciones import (mostrar_menu, play_sound, clear_console, filtrar_genero_cantidad, filtrar_heroes_poder,
                     filtrar_heroes_altura, filtrar_genero_poder_mas, filtrar_genero_poder_menos, filtrar_genero_poder_entre, 
-                    filtrar_poder_minimo, filtrar_altura_maxima, )
+                    filtrar_poder_minimo, filtrar_altura_maxima, 
+                    ordenar_heroes_alfabetamente_apodo, ordenar_heroes_alfabeticamente_nombre, ordenar_heroes_por_altura)
 
 def utn_heroes_app(matriz_data_heroes: list[list]):
     while True:
@@ -38,10 +44,13 @@ def utn_heroes_app(matriz_data_heroes: list[list]):
                 filtrar_altura_maxima(matriz_data_heroes)
                 pass
             case 10:
+                ordenar_heroes_alfabeticamente_nombre(matriz_data_heroes)
                 pass
             case 11:
+                ordenar_heroes_alfabetamente_apodo(matriz_data_heroes)
                 pass
             case 12:
+                ordenar_heroes_por_altura(matriz_data_heroes)
                 pass
             case 13:
                 break

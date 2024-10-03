@@ -1,3 +1,5 @@
+from UTN_Heroes_Dataset.utn_funciones.auxiliares import color_text
+
 def mostrar_menu():
     menu = """"
     Menú:
@@ -16,7 +18,7 @@ def mostrar_menu():
     13) Salir
     """
 
-    print(menu)
+    print(color_text(menu, 'Info'))
 
 if __name__ == "__main__":
     mostrar_menu()
