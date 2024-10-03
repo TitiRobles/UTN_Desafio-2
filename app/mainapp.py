@@ -1,8 +1,3 @@
-# import sys
-# import os
-
-# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from validaciones.validaciones_pckg import validar_opcion
 from funciones import (mostrar_menu, play_sound, clear_console, filtrar_genero_cantidad, filtrar_heroes_poder,
                     filtrar_heroes_altura, filtrar_genero_poder_mas, filtrar_genero_poder_menos, filtrar_genero_poder_entre, 
